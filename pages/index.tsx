@@ -1,7 +1,7 @@
 import type { NextPage, GetStaticProps } from 'next';
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
-import { TextareaAutosize } from '@mui/material';
+import { TextField } from '@mui/material';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import React, { ChangeEvent, useState } from 'react';
 import { WordStatsDto } from '../models/WordStats.dto';
@@ -31,20 +31,23 @@ const WordCountPage: NextPage<IHomeProps> = ({ columns }) => {
 				<h2 className={styles.subtitle}>Made With Next.js and Typescript</h2>
 
 				<div className={styles.grid}>
-					<TextareaAutosize minRows={5} placeholder='Write or Paste a Sentence' onChange={onChange} className={styles.box} />
 					<div className={styles.box}>
-						<DataGrid rows={wordsStats} columns={columns} pageSize={10} rowsPerPageOptions={[10]} />
+						<TextField id='input-text' label='Write or Paste a Sentence' multiline rows='10' onChange={onChange} fullWidth className={styles.textfield} />
+					</div>
+					<div className={styles.box}>
+						<DataGrid rows={wordsStats} columns={columns} pageSize={10} rowsPerPageOptions={[10]} className={styles.datatable} />
 					</div>
 				</div>
 			</main>
 		</div>
 	);
 };
+//			<TextareaAutosize minRows={5} placeholder='Write or Paste a Sentence' onChange={onChange} className={styles.box} />;
 
 export const getStaticProps: GetStaticProps = async () => {
 	const columns: GridColDef[] = [
-		{ field: 'word', headerName: 'Word', width: 150 },
-		{ field: 'count', headerName: 'Count', width: 150 },
+		{ field: 'word', headerName: 'Word', width: 250, headerAlign: 'center' },
+		{ field: 'count', headerName: 'Count', width: 250, headerAlign: 'center' },
 	];
 
 	return {
