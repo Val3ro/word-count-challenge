@@ -1,0 +1,57 @@
+import type { NextPage, GetStaticProps } from 'next';
+import Head from 'next/head';
+import styles from '../styles/Home.module.css';
+import { TextareaAutosize } from '@mui/material';
+import { DataGrid, GridColDef } from '@mui/x-data-grid';
+import React, { ChangeEvent, useState } from 'react';
+import { WordStatsDto } from '../models/WordStats.dto';
+import { IHomeProps } from '../models/HomeProps.interface';
+import { WordCountService } from '../services/WordCount.service';
+
+const WordCountPage: NextPage<IHomeProps> = ({ columns }) => {
+	const [wordsStats, setWordsStats] = useState(new Array<WordStatsDto>());
+
+	const onChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
+		const inputString: string = event.target.value;
+		const rowsToAdd: Array<WordStatsDto> = WordCountService.processInput(inputString);
+
+		setWordsStats(rowsToAdd);
+	};
+
+	return (
+		<div className={styles.container}>
+			<Head>
+				<title>Word Count Challenge</title>
+				<meta name='description' content='A small app to count the words in sentences.' />
+				<link rel='icon' href='/favicon.ico' />
+			</Head>
+
+			<main className={styles.main}>
+				<h1 className={styles.title}>Word Counter</h1>
+				<h2 className={styles.subtitle}>Made With Next.js and Typescript</h2>
+
+				<div className={styles.grid}>
+					<TextareaAutosize minRows={5} placeholder='Write or Paste a Sentence' onChange={onChange} className={styles.box} />
+					<div className={styles.box}>
+						<DataGrid rows={wordsStats} columns={columns} pageSize={10} rowsPerPageOptions={[10]} />
+					</div>
+				</div>
+			</main>
+		</div>
+	);
+};
+
+export const getStaticProps: GetStaticProps = async () => {
+	const columns: GridColDef[] = [
+		{ field: 'word', headerName: 'Word', width: 150 },
+		{ field: 'count', headerName: 'Count', width: 150 },
+	];
+
+	return {
+		props: {
+			columns: columns,
+		},
+	};
+};
+
+export default WordCountPage;
