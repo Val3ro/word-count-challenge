@@ -1,5 +1,3 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
 ## Getting Started
 
 This is the code for the coding challenge. The solution has been made using TypeScript and Next.js, I am not very familiar with Next but I wanted to get closer to the stack you mostly use at the moment.
@@ -41,6 +39,6 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 Since the assignment was open for interpretation, some assumptions have been made:
 
 - Multiple spaces between words count as one space.
-- Fullstops and Commas at the beggining or end of a word are removed.
+- Symbols at the beggining or end of a word are removed.
 - Not case sentitive. All text is converted to Lower Case.
-- A word has always at least one letter or a number. `..` does not count as a word.
+- A word has always at least one letter or a number. `.!.` does not count as a word.
