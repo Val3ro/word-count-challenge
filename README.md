@@ -39,6 +39,6 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 Since the assignment was open for interpretation, some assumptions have been made:
 
 - Multiple spaces between words count as one space.
-- Symbols at the beggining or end of a word are removed.
+- Fullstops and Commas at the beggining or end of a word are removed..
 - Not case sentitive. All text is converted to Lower Case.
 - A word has always at least one letter or a number. `.!.` does not count as a word.
