@@ -41,4 +41,4 @@ Since the assignment was open for interpretation, some assumptions have been mad
 - Multiple spaces between words count as one space.
 - Fullstops and Commas at the beggining or end of a word are removed..
 - Not case sentitive. All text is converted to Lower Case.
-- A word has always at least one letter or a number. `.!.` does not count as a word.
+- A word always has at least one letter, one number or one symbol (`.` and `,` do not count). `...` is not a word.
