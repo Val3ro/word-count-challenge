@@ -13,7 +13,7 @@ const WordCountPage: NextPage<IHomeProps> = ({ columns }) => {
 
 	const onChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
 		const inputString: string = event.target.value;
-		const rowsToAdd: Array<WordStatsDto> = WordCountService.processInput(inputString);
+		const rowsToAdd: Array<WordStatsDto> = WordCountService.stringHandler(inputString);
 
 		setWordsStats(rowsToAdd);
 	};
@@ -32,10 +32,19 @@ const WordCountPage: NextPage<IHomeProps> = ({ columns }) => {
 
 				<div className={styles.grid}>
 					<div className={styles.box}>
-						<TextField id='input-text' label='Write or Paste a Sentence' multiline rows='10' onChange={onChange} fullWidth className={styles.textfield} />
+						<TextField id='input-text' label='Write or Paste a Sentence' multiline rows='20' onChange={onChange} fullWidth className={styles.textfield} />
 					</div>
 					<div className={styles.box}>
-						<DataGrid rows={wordsStats} columns={columns} pageSize={10} rowsPerPageOptions={[10]} className={styles.datatable} />
+						<DataGrid
+							rows={wordsStats}
+							columns={columns}
+							pageSize={10}
+							rowsPerPageOptions={[10]}
+							disableColumnMenu
+							isRowSelectable={() => {
+								return false;
+							}}
+						/>
 					</div>
 				</div>
 			</main>

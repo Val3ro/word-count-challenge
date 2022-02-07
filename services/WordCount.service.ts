@@ -1,14 +1,26 @@
 import { WordStatsDto } from '../models/WordStats.dto';
 
 export class WordCountService {
-	static parseStringToArray = (inputString: string): Array<string> => {
+	static cleanString = (inputString: string): string => {
+		// Trim string
 		const trimString = inputString.trim();
-		const lowerCaseString = trimString.toLowerCase();
 
-		return lowerCaseString.split(' ');
+		// Remove fullstops and commas
+		const noPunctuaionString = trimString.replace(/[.,]/g, '');
+
+		// Transform string to lowercase
+		const stringToLowerCase = noPunctuaionString.toLowerCase();
+
+		return stringToLowerCase;
 	};
 
-	static processInput = (inputString: string): Array<WordStatsDto> => {
+	static parseStringToArray = (inputString: string): Array<string> => {
+		const cleanString = WordCountService.cleanString(inputString);
+
+		return cleanString.split(/\s+/);
+	};
+
+	static stringHandler = (inputString: string): Array<WordStatsDto> => {
 		const rowsToAdd = new Array<WordStatsDto>();
 		const inputArray = WordCountService.parseStringToArray(inputString);
 
