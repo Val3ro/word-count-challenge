@@ -20,8 +20,18 @@ export class WordCountService {
 		return cleanString.split(/\s+/);
 	};
 
+	static HasAtLeastALetter = (inputString: string): boolean => {
+		const regex = /[a-zA-Z]/;
+
+		return regex.test(inputString);
+	};
+
 	static stringHandler = (inputString: string): Array<WordStatsDto> => {
 		const rowsToAdd = new Array<WordStatsDto>();
+
+		if (inputString === '') return rowsToAdd;
+		if (!WordCountService.HasAtLeastALetter(inputString)) return rowsToAdd;
+
 		const inputArray = WordCountService.parseStringToArray(inputString);
 
 		inputArray.forEach(currWord => {
