@@ -55,8 +55,8 @@ const WordCountPage: NextPage<IHomeProps> = ({ columns }) => {
 
 export const getStaticProps: GetStaticProps = async () => {
 	const columns: GridColDef[] = [
-		{ field: 'word', headerName: 'Word', width: 250, headerAlign: 'center' },
-		{ field: 'count', headerName: 'Count', width: 250, headerAlign: 'center' },
+		{ field: 'word', headerName: 'Word', width: 286, headerAlign: 'center' },
+		{ field: 'count', headerName: 'Count', width: 286, headerAlign: 'center' },
 	];
 
 	return {

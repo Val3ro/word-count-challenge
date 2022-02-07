@@ -2,7 +2,23 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server:
+This is the code for the coding challenge. The solution has been made using TypeScript and Next.js, I am not very familiar with Next but I wanted to get closer to the stack you mostly use at the moment.
+
+The Application has been deployed in Vercel. I wanted to deploy it because I thought it would be more efficient than having to clone and run the repository. The reason why I used Vercel is because until now I had only used Heroku. (Find the app [here](https://word-count-challenge.vercel.app/))
+
+You can run the code locally anyway by downloading the code and run the following instructions:
+
+1- Install dependencies and packages
+
+```bash
+npm install
+# or
+yarn
+```
+
+2- Run the app
+
+For the Development Environment use:
 
 ```bash
 npm run dev
@@ -10,25 +26,21 @@ npm run dev
 yarn dev
 ```
 
+And for the Production Environment use:
+
+```bash
+npm run build
+# or
+yarn build
+```
+
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Assumptions
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+Since the assignment was open for interpretation, some assumptions have been made:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Multiple spaces between words count as one space.
+- Fullstops and Commas at the beggining or end of a word are removed.
+- Not case sentitive. All text is converted to Lower Case.
+- A word has always at least one letter or a number. `..` does not count as a word.

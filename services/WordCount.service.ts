@@ -2,14 +2,14 @@ import { WordStatsDto } from '../models/WordStats.dto';
 
 export class WordCountService {
 	static cleanString = (inputString: string): string => {
-		// Trim string
-		const trimString = inputString.trim();
-
 		// Remove fullstops and commas
-		const noPunctuaionString = trimString.replace(/[.,]/g, '');
+		const noPunctuaionString = inputString.replace(/[.,]/g, '');
+
+		// Trim string
+		const trimString = noPunctuaionString.trim();
 
 		// Transform string to lowercase
-		const stringToLowerCase = noPunctuaionString.toLowerCase();
+		const stringToLowerCase = trimString.toLowerCase();
 
 		return stringToLowerCase;
 	};
@@ -17,6 +17,7 @@ export class WordCountService {
 	static parseStringToArray = (inputString: string): Array<string> => {
 		const cleanString = WordCountService.cleanString(inputString);
 
+		// Split by one or more spaces
 		return cleanString.split(/\s+/);
 	};
 
@@ -50,7 +51,7 @@ export class WordCountService {
 
 			rowsToAdd.push(newWordStats);
 		});
-
+		console.log(rowsToAdd);
 		return rowsToAdd;
 	};
 }
