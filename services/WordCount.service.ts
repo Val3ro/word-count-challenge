@@ -51,7 +51,6 @@ export class WordCountService {
 
 			rowsToAdd.push(newWordStats);
 		});
-		console.log(rowsToAdd);
 		return rowsToAdd;
 	};
 }
