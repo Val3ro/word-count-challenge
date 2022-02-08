@@ -1,4 +1,4 @@
-## Getting Started
+## Introduction
 
 This is the code for the coding challenge. The solution has been made using TypeScript and Next.js, I am not very familiar with Next but I wanted to get closer to the stack you mostly use at the moment.
 
